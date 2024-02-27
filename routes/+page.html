@@ -1,0 +1,131 @@
+<script>
+	import {fade} from 'svelte/transition'
+	import {onMount, onDestroy} from "svelte"
+	
+	const carouselPhotos = [
+	'src/images/titanic.jpeg',
+    'src/images/rocky.jpeg',
+    'src/images/download.jpeg'
+	]
+	
+	let i = 0;
+	
+
+	function next(){
+		i = (i+1) % carouselPhotos.length;
+	}
+	
+	let timer;
+	onMount(() => {
+		let timer = setInterval(next,2000);
+	})
+	onDestroy(() => {
+		clearInterval(timer);
+	})
+
+	function navigateToWonkaPage() {
+		window.location.href= "src/routes/wonka.svelte";
+	}
+ 
+</script>
+
+<svelte:head>
+	<title>MVDreview - Home</title>
+</svelte:head>
+
+<h1>
+	Benvenuti su MVDreview
+</h1>
+
+<p style="text-align:center;">
+
+	<span style = "color:red;font-size:26px">DISCLAIMER!!!</span>
+	<br>
+	Qui troverete recensioni su vari film; alcuni sconosciuti, altri più famosi.
+	<br>
+	Non siamo dei critici, quindi prendente le nostre """recensioni""" cosi come sono: un cumulo di argomentaizoni basate su criteri soggettivi riguardo la pellicola! 
+
+</p>
+
+<d>Ultime recensione caricate</d>
+<br>
+<br>
+<p1 style= " background: url('src/images/rocky.jpeg'); overflow: hidden;background-size: cover;background-repeat: no-repeat;">
+	<p2 style= "backdrop-filter: blur(0)">
+		Rocky
+	</p2>
+
+</p1>
+<p1 style= " background: url('src/images/titanic.jpeg'); overflow: hidden;background-size: cover;background-repeat: no-repeat;">
+	<p2 style= "backdrop-filter: blur(0)">
+		Titanic
+	</p2>
+</p1>
+<p1 style= " background: url('src/images/wonka.jpeg'); overflow: hidden;background-size: cover;background-repeat: no-repeat;">
+	<p2 style= "backdrop-filter:blur(0)">
+			<a href="wonka.html" target="_parent">
+			Wonka
+		</a>
+		</p2>
+</p1>
+<!--
+<div>
+	<par>
+		Wonka
+	</par>
+	<br>
+	Ho personalmente visto questo film il giorno di Natale. Devo dire che un film migliore non potevo scegliere. 
+</div>
+-->
+<style>
+
+	h1 {
+		position: relative;
+	}
+
+p{
+		border: solid 5px;
+		border-color:#6E39DB;
+		background-color: #8E969C;
+		border-radius: 5px;
+		margin-left: 250px;
+		margin-right: 250px;
+		padding: 20px;
+		font-style: italic;
+		font-family: "Courier New", sans-serif,monospace;
+	}
+	
+par {
+		height: 75%;
+		width: 75%;
+		background-color: #0088dd;
+	}
+p1{
+	position: relative;
+    border: solid 2px;
+	border-radius: 5px;
+    border-color: #6E39DB;
+    padding-bottom: 90px;
+
+}
+
+p2{
+	background-color: #6E39DB;
+	opacity: 0.7;
+	position: relative;
+	bottom: -90px;
+	left: 0;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, serif;
+	color: white;
+	padding-left: 150px;
+	padding-right: 10px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	font-style: italic;
+}
+
+a {
+	color: white;
+}
+
+</style>
